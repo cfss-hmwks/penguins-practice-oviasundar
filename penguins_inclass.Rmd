@@ -1,11 +1,11 @@
 ---
 title: "Penguins"
-author: "Jean Clipperton"
+author: "Ovia Sundar"
 date: "`r Sys.Date()`"
 output: 
-  prettydoc::html_pretty:
-    theme: cayman
-    highlight: github
+    prettydoc::html_pretty:
+      theme: cayman
+      highlight: github
 ---
 
 ```{r setup, include=FALSE}
@@ -26,6 +26,7 @@ library(palmerpenguins)
 
 data("penguins")
 
+penguins
 penguins_sex <- group_by(.data = penguins, sex)
 penguins_sex_adelie <- filter(.data = penguins_sex, species == "Adelie")
 
@@ -39,9 +40,17 @@ summarize(
 Summarize the dataset in a meaningful way (use AT LEAST two of the key functions from slide #12)
 
 ```{r}
-
+penguins %>%
+  filter(species == "Adelie") %>%
+  group_by(flipper_length_mm) %>%
+  summarize(bill_length_mm = mean(bill_length_mm, na.rm = TRUE))
 ```
+```{r women}
 
-# Final task
+data("women")
 
-You need to make a README.md doc -- practice by outputting a .md file here and renaming it to README.md before pushing to github
+women
+
+
+
+
